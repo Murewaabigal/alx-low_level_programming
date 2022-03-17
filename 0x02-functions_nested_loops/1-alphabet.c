@@ -18,5 +18,3 @@ alpha++;
 }
 _putchar('\n');
 }
-	 
-
