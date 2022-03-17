@@ -1,23 +1,19 @@
 #include "main.h"
 
 /**
- * main - print the letters of the alphabet
+ * print_alphabet - print alphabet
  *
- * Description: print the letters of the alphabet
- *
- * Return: Always 0 (Success)
+ * Return:void
  */
-
-int main(void)
+void print_alphabet_alphabet(void)
 {
-	int i = 97;
+	char letter = 'a';
 
-	while (i < 123)
+	while (letter <= 'z';)
 	{
-		putchar(i);
-		i++;
+		_putchar(letter);
+		letter++;
 	}
-	putchar(10);
-
-	return (0);
+	_putchar('\n');
 }
+
