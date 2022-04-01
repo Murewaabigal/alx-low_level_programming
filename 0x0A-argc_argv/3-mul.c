@@ -16,7 +16,7 @@ return (1);
 }
 for (i = 1; i < argc; ++i)
 {
-m = m * atoi(argv[i]);
+m = m *atoi(argv[i]);
 }
 printf("%d\n", m);
 return (0);
