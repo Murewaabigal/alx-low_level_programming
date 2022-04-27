@@ -1,30 +1,40 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stdio.h>
 /**
- * free_listint_safe - free a `listint_t` list and set the head to null
- * @h: double pointer to head of linked list
- * Description: This function should work for circular lists
- * Only loop through the list once
- * Return: size of the list that was free'd
- */
-size_t free_listint_safe(listint_t **h)
+  * find_listint_loop - finds the loop in a linked list.
+  * @head: pointer to first element in list.
+  *
+  * Return: address of the node or NULL.
+  */
+listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *current, *hold;
-	size_t count;
+	listint_t *current, *next_node;
 
-	count = 0;
-	current = *h;
-	while (current != NULL)
+	if (head == NULL)
+		return (NULL);
+
+	current = head;
+	next_node = head;
+	while (current && next_node && next_node->next)
 	{
-		count++;
-		hold = current;
 		current = current->next;
-		free(hold);
-		if (hold < current)
-			break;
+		next_node = next_node->next->next;
+		if (current == next_node)
+		{
+			return (next_node);
+		}
 	}
-	*h = NULL;
-
-	return (count);
+	if (current != next_node)
+	{
+		return (NULL);
+	}
+	else
+	{
+		current = head;
+		while (current != next_node)
+		{
+			current = current->next;
+			next_node = next_node->next;
+		}
+		return (next_node);
+	}
 }
